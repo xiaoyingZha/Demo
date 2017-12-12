@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul{
+            list-style: none;
+            padding: 0;
+            width:400px;
+            height:500px;
+            overflow: hidden;
+            margin:auto;
+            position: relative;
+        }
+
+        li{
+            left:0;
+            right:0;
+            height:40px;
+            line-height: 40px;
+            border:1px solid #000;
+            position: absolute;
+        }
+        a{
+            float: right;
+            margin-right:5px;
+        }
+
+    </style>
+    <script src="JsFunction.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<ul>
+    <li> <a href="javascript:;">上移</a><a href="javascript:;">下移</a>1111</li>
+    <li><a href="javascript:;">上移</a><a href="javascript:;">下移</a>2222222 </li>
+    <li><a href="javascript:;">上移</a><a href="javascript:;">下移</a> 333333 </li>
+    <li><a href="javascript:;">上移</a><a href="javascript:;">下移</a> 444444 </li>
+    <li><a href="javascript:;">上移</a><a href="javascript:;">下移</a> 5555555555 </li>
+</ul>
+
+
+<!--<script src="../../tween.js"></script>
+<script src="../../commom.js"></script>-->
+<script src="JsFunction.js" type="text/javascript" charset="utf-8"></script>
+<script>
+
+    var lis = document.querySelectorAll('li');
+    var ul = document.querySelector('ul');
+
+    var onoff = true;
+
+
+    for(var i=0;i<lis.length;i++){
+
+        //添加样式
+        lis[i].style.top = i*47+'px';
+
+
+        var a = lis[i].children;
+
+//        console.log(a);
+
+        a[1].onclick = function(){
+
+            if(!onoff) return;
+            onoff = false;
+
+            //获取最新位置的li用来运算
+            lis = document.querySelectorAll('li');
+
+
+
+            //把当前这个一个放到下一个的一下个的前面
+            if( this.parentNode.nextElementSibling){
+                var childNode1 = this.parentNode.nextElementSibling.nextElementSibling;
+
+                var end = this.parentNode.nextElementSibling.offsetTop;
+
+                var over = this.parentNode.offsetTop;
+
+                MTweenPlus({
+                    obj:this.parentNode,
+                    attrs:{
+                        top:end+'px'
+                    },
+                    duration:200
+                });
+
+                MTweenPlus({
+                    obj:this.parentNode.nextElementSibling,
+                    attrs:{
+                        top:over+'px'
+                    },
+                    duration:220,
+                    callBack:function(){
+                        onoff = true;
+                    }
+                });
+
+
+                //交换元素的方式只有 insertBefore
+                ul.insertBefore(this.parentNode,childNode1)
+
+            }else{
+
+                //最后一个的做法：
+
+                var end = ul.firstElementChild.offsetTop;
+
+                for(var i=0;i<lis.length-1;i++){
+
+                    var over = lis[i].nextElementSibling.offsetTop;
+
+                    MTweenPlus({
+                        obj:lis[i],
+                        attrs:{
+                            top:over+'px'
+                        },
+                        duration:200
+                    });
+
+
+                }
+
+                MTweenPlus({
+                    obj:this.parentNode,
+                    attrs:{
+                        top:end+'px'
+                    },
+                    duration:220,
+                    callBack:function(){
+                        onoff = true;
+                    }
+                });
+
+                ul.insertBefore(this.parentNode,ul.firstElementChild);
+
+            }
+
+        };
+
+
+        a[0].onclick = function(){
+
+            if(!onoff) return;
+            onoff = false;
+
+            //从新获取一下最新位置的元素
+            lis = document.querySelectorAll('li');
+
+            //把自己放到上一个兄弟元素的前面
+            var childNode1 = this.parentNode.previousElementSibling;
+
+            //边界处理
+            if(childNode1){
+                var end = childNode1.offsetTop;
+
+                var over = this.parentNode.offsetTop;
+
+                //添加交互效果
+                MTweenPlus({
+                    obj:this.parentNode,
+                    attrs:{
+                        top:end+'px'
+                    },
+                    duration:200
+                });
+
+                MTweenPlus({
+                    obj:childNode1,
+                    attrs:{
+                        top:over+'px'
+                    },
+                    duration:220,
+                    callBack:function(){
+                        onoff = true;
+                    }
+                });
+
+                ul.insertBefore(this.parentNode,childNode1)
+            }else{
+
+                //先保存一下当前元素要到达的位置
+                var end = ul.lastElementChild.offsetTop;
+
+                //然后把其他元素移走
+                for(var i=1;i<lis.length;i++){
+                    //找上一个的位置
+
+                    var over  = lis[i].previousElementSibling.offsetTop;
+
+                    MTweenPlus({
+                        obj:lis[i],
+                        attrs:{
+                            top:over+'px'
+                        },
+                        duration:200
+
+                    });
+                }
+
+                //等其他的移动开始了  我自己再开始移动
+                MTweenPlus({
+                    obj:this.parentNode,
+                    attrs:{
+                        top:end+'px'
+                    },
+                    duration:220,
+                    callBack:function(){
+                        onoff = true;
+                    }
+                });
+
+                ul.appendChild(this.parentNode);
+
+            }
+
+
+
+        };
+
+
+
+
+    }
+
+
+
+
+</script>
+
+
+</body>
+</html>

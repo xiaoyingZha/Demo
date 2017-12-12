@@ -1,0 +1,33 @@
+.img-box{
+	position: relative;
+	float: left;
+	width: 400px;
+	height: 300px;
+	border: 10px solid #000;
+	margin-right: 50px;
+}
+.img-box img{
+	width: 100%;
+	height: 100%;
+}
+.fdj{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100px;
+	height: 100px;
+	background-color: rgba(246,242,246,.5);
+}
+.show-box{
+	float: left;
+	position: relative;
+	width: 400px;
+	height: 400px;
+	background: url(1.png) no-repeat 0 0;
+	background-size: 1600px 1200px;
+}
+.show-box img{
+	position: absolute;
+	width: 800px;
+	height: 600px;
+}

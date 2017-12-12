@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				
+				width: 550px;
+				height: 380px;
+				background-color: pink;
+				margin: 50px auto;
+				padding: 40px 20px;
+			}
+			ul{
+				width: 450px;
+				position: relative;
+				list-style: none;
+				height: 350px;
+			}
+			ul li{
+				position: absolute;
+				width: 450px;
+				height: 50px;
+				line-height: 50px;
+				background-color: #fff;
+				border-radius: 5px;
+			}
+			.active{
+				background-color: pink;
+				color: #fff;
+			}
+			li span:nth-of-type(1){
+				float: left;
+				width: 60px;
+				height: 30px;
+				line-height: 30px;
+				margin: 10px;
+				border-left: 3px solid pink;
+				text-align: center;
+			}
+			li span:nth-of-type(2){
+				float: right;
+			}
+			li a{
+				padding: 2px 5px;
+				margin: 0 10px;
+				color: pink;
+				text-decoration: none;  
+				border: 2px solid pink; 
+				border-radius: 3px;
+			}
+		</style>
+		<script src="JsFunction.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+				<li>
+					<span>HTML</span>
+					<span>
+						<a href="javascript:;">上移</a>
+						<a href="javascript:;">下移</a>
+					</span>
+				</li>
+				<li>
+					<span>CSS</span>
+					<span>
+						<a href="javascript:;">上移</a>
+						<a href="javascript:;">下移</a>
+					</span>
+				</li>
+				<li>
+					<span>JS</span>
+					<span>
+						<a href="javascript:;">上移</a>
+						<a href="javascript:;">下移</a>
+					</span>
+				</li>
+				<li>
+					<span>PHP</span>
+					<span>
+						<a href="javascript:;">上移</a>
+						<a href="javascript:;">下移</a>
+					</span>
+				</li>
+				<li>
+					<span>Rect</span>
+					<span>
+						<a href="javascript:;">上移</a>
+						<a href="javascript:;">下移</a>
+					</span>
+				</li>
+				<li>
+					<span>Java</span>
+					<span>
+						<a href="javascript:;">上移</a>
+						<a href="javascript:;">下移</a>
+					</span>
+				</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			
+			
+			//**获取元素**//
+			var ul = document.querySelector('ul');
+			var aLi = document.querySelectorAll('li');
+			var a1 = document.querySelectorAll('li a:nth-of-type(1)');
+			var a2 = document.querySelectorAll('li a:nth-of-type(2)');
+			
+			
+			//**页面布局top**//
+			for(var i=0; i<aLi.length; i++){
+				
+				aLi[i].style.top = 60*i + 'px';
+			}
+			
+			var onOff = true;
+			
+			//**添加事件**//
+			for(var i=0; i<aLi.length; i++){
+				
+				
+				//**点击'上移'的按钮**//
+				a1[i].onclick = function(){
+					
+					if(!onOff) return;
+					onOff = false;
+					
+					
+					var ele = this.parentNode.parentNode;//获取当前对应的li
+					
+					
+					//如果存在上一个兄弟元素
+					if(ele.previousElementSibling){
+						
+						//当前移动到上一个兄弟的位置
+						MTweenPlus({
+					        obj:ele,
+					        attrs:{
+					        	top:ele.previousElementSibling.offsetTop + 'px'
+					        },
+					        duration:500,
+					    });
+						
+						//上一个兄弟移动到我的位置
+						MTweenPlus({
+					        obj:ele.previousElementSibling,
+					        attrs:{
+					        	top:ele.offsetTop + 'px'
+					        },
+					        duration:500,
+					        callBack:function(){
+		                        onOff = true;
+		                    }
+					    });
+					    
+					}else{//如果不存在上一个兄弟元素
+						
+						//让我的下一个兄弟节点上移一个位置（下一个兄弟的下一个兄弟也....）
+						up(ele.nextElementSibling);
+						
+						//我要移动到最下面
+						MTweenPlus({
+					        obj:ele,
+					        attrs:{
+					        	top:60*(aLi.length-1) + 'px'
+					        },
+					        duration:500,
+					        callBack:function(){
+		                        onOff = true;
+		                    }
+					    });
+					}
+					
+					//替换元素
+					ul.insertBefore(ele,ele.previousElementSibling);
+					
+					//按钮样式改变
+					this.className = '';
+				};
+				
+				
+				//**点击'下移'的按钮**//
+				a2[i].onclick = function(){
+					
+					if(!onOff) return;
+					onOff = false;
+					
+						
+					//获取当前对应的li
+					var ele = this.parentNode.parentNode;
+					
+					//如果（li）存在下一个兄弟元素节点
+					if(ele.nextElementSibling){
+						
+						//我移动到我下一个兄弟的位置
+						MTweenPlus({
+					        obj:ele,
+					        attrs:{
+					        	top:ele.nextElementSibling.offsetTop + 'px'
+					        },
+					        duration:500,
+					    });
+						
+						//我下一个兄弟移动到我的位置
+						MTweenPlus({
+					        obj:ele.nextElementSibling,
+					        attrs:{
+					        	top:ele.offsetTop + 'px'
+					        },
+					        duration:500,
+					        callBack:function(){
+		                        onOff = true;
+		                    }
+					    });
+							
+						//替换元素
+						ul.insertBefore(ele.nextElementSibling,ele);
+						
+					}else{//如果（li）不存在下一个兄弟元素节点
+						
+						
+						//让我的上一个兄弟节点下移一个位置（上一个兄弟的上一个兄弟也....）
+						down(ele.previousElementSibling);
+
+
+						//我移动到最上面
+						MTweenPlus({
+					        obj:ele,
+					        attrs:{
+					        	top:0 + 'px'
+					        },
+					        duration:500,
+					        callBack:function(){
+		                        onOff = true;
+		                    }
+					    });
+						
+						//替换元素
+						ul.insertBefore(ele,ul.firstElementChild);
+					}
+					
+					//改变按钮样式
+					this.className = '';
+				}
+				
+				
+				//**鼠标移入事件**//
+				a1[i].onmouseover = a2[i].onmouseover = function(){
+					this.className = 'active';
+				};
+				
+				
+				//**鼠标移除事件**//
+				a1[i].onmouseout = a2[i].onmouseout = function(){
+					this.className = '';
+				};
+				
+			}
+			
+			
+			
+			
+			//**下移一个位置的函数**//
+			function down(ele){
+				MTweenPlus({
+			        obj:ele,
+			        attrs:{
+			        	top:ele.offsetTop + 60 + 'px'
+			        },
+			        duration:500,
+			    });
+			    if(ele.previousElementSibling){//递归
+			    	down(ele.previousElementSibling);
+			    }
+			}
+			
+			
+			//**上移一个位置的函数**//
+			function up(ele){
+				MTweenPlus({
+			        obj:ele,
+			        attrs:{
+			        	top:ele.offsetTop - 60 + 'px'
+			        },
+			        duration:500,
+			    });
+			    if(ele.nextElementSibling){//递归
+			    	up(ele.nextElementSibling);
+			    }
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+/*reset*/
+/*<<用到谁就清除谁!!!>>*/
+
+body,h3{
+	margin: 0;
+}
+
+
+/*list reset*/
+ul,ol{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+/*img reset*/
+img{
+	vertical-align: top;
+	border: none;
+}
+
+/*float*/
+.tl{
+	float: left;
+}
+.tr{
+	float: right;
+}
+
+/*clear*/
+.clearfix{
+	*zoom: 1;
+}
+.clearfix::after{
+	display: block;
+	content: "";
+	clear: both;
+}
+
+/*wrap*/
+.wrap{
+	/*用来设置固定宽*/
+}

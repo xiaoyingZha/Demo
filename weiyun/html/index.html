@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/tools.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/Font-Awesome-3.2.1/css/font-awesome.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/index.css"/>
+		<script src="../js/JsFunction.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/index.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<section id="weiyun">
+			<div class="box">
+				<header class="head">
+					<h1 class="log">
+						<a href="javascript:;">微云</a>
+					</h1>
+					<div class="tool">
+						<!--任务按钮-->
+						<div class="task">
+							<i class="icon-exchange"></i>
+							<span class="task-tip" style="display: ;">任务列表</span>
+							<div class="task-box" style="display: none;">
+								<div class="task-box-line"></div>
+								<div class="task-main">
+									<header>任务列表</header>
+									<ul class="task-title-list">
+										<li><a href="javascript:;">执行中(0)</a></li>
+										<li><a href="javascript:;">已完成</a></li>
+									</ul>
+									<div class="bottom-line"></div>
+									<ul class="task-show-list">
+									</ul>
+									<div class="no-task-show">
+										<span>会员专属极速传输<a href="javascript:;">开通会员</a></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--搜索框-->
+						<div class="search">
+							<input type="text" placeholder="搜索全部微云"/>
+							<div class="fdj">
+								
+							</div>
+							<dl style="display: none;">
+								<dt>
+									<span>历史记录</span>
+									<span>清除记录</span>
+								</dt>
+								<dd>
+									<span>搜索的文字</span>
+									<span>+</span>
+								</dd>
+							</dl>
+						</div>
+					</div>
+					<!--右侧用户服务-->
+					<div class="user-serve">
+						<div class="">
+							<a href="javascript:;">开会员最大多送一年</a>
+						</div>
+						<div class="">
+							<a href="javascript:;" id="load-client">下载客户端</a>
+						</div>
+						<div class="user-help-box">
+							<a href="javascript:;">YINGYAN <i class="icon-caret-down"></i></a>
+							<div class="user-help" style="display: none;">
+								<div class="about-user">
+									<h3>
+										<a href="javascript:;">YINGYAN</a>
+									</h3>
+									<div class="user-vip">
+										<a href="javascript:;" class="vip-ico"></a>
+										<span class="vip-info">超级会员专享4T容量</span>
+										<a href="javascript:;" class="vip-open">开通</a>
+									</div>
+									<div class="user-capacity">
+										容量<span>1.3K</span>/<span>10G</span>
+									</div>
+								</div>
+								<ul class="about-help">
+									<li>
+										<a href="javascript:;">帮助与反馈</a>
+									</li>
+									<li class="user-privacy">
+										<a href="javascript:;">安全与隐私</a>
+										<ul class="privacy-list" style="display: none;">
+											<li>
+												<a href="javascript:;">开启保险箱</a>
+											</li>
+											<li>
+												<a href="javascript:;">开启独立密码</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a href="javascript:;">退出登陆</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</header>
+				<section class="main clearfix">
+					<aside class="aside">
+						<!--用户头像、开通会员-->
+						<div class="user">
+							<a href="javascript:;">
+								<img src="../img/tx.jpg"/>
+							</a>
+							<a href="javascript:;">开通</a>
+						</div>
+						<!--目录列表-->
+						<div class="driectory">
+							<ul class="list1">
+								<li>
+									<a href="javascript:;">
+										<i class="icon-time"></i>
+										<span>最近</span>
+									</a>
+								</li>
+							</ul>
+							<!--分界线-->
+							<div class="boundary"></div>
+							<ul class="list2">
+								<li class="driectory-all"><a href="javascript:;"><i class="icon-file-alt"></i><span>全部</span></a></li>
+								<li><a href="javascript:;"><i class=" icon-file"></i><span>文档</span></a></li>
+								<li><a href="javascript:;"><i class="icon-bar-chart"></i><span>图片</span></a></li>
+								<li><a href="javascript:;"><i class="icon-facetime-video"></i><span>视频</span></a></li>
+								<li><a href="javascript:;"><i class="icon-headphones"></i><span>音乐</span></a></li>
+							</ul>
+							<!--分界线-->
+							<div class="boundary"></div>
+							<ul class="list3">
+								<li><a href="javascript:;"><i class="icon-camera-retro"></i><span>照片</span></a></li>
+								<li><a href="javascript:;"><i class="icon-list-alt"></i><span>笔记</span></a></li>
+								<li><a href="javascript:;"><i class="icon-money"></i><span>保险箱</span></a></li>
+								<li><a href="javascript:;"><i class="icon-reply"></i><span>分享链接</span></a></li>
+								<li><a href="javascript:;"><i class="icon-trash"></i><span>回收站</span></a></li>
+							</ul>
+						</div>
+					</aside>
+					<article class="content">
+						<header class="content-head">
+							<div class="tl">
+								<!--全选按钮-->
+								<div class="all-btn" style="display: none;">
+									<i class="icon-ok"></i>
+								</div>
+								<!--线-->
+								<div class="line" style="visibility: hidden;">
+									
+								</div>
+								<!--当前标题-->
+								<div class="head-title">
+									<span>全部</span>
+								</div>
+							</div>
+							<div class="tr">
+								<!--选择的模式-->
+								<div class="pattern" style="display: none;">
+									<a href="javascript:;">
+										<i class="icon-list-ul"></i>
+										<span class="pattern-more"></span>
+									</a>
+									<!--子菜单-->
+									<ul class="pattern-list" style="display: ;">
+										<li>
+											<ul class="list-list1">
+												<li><a href="javascript:;"><i class="icon-ok"></i>列表</a></li>
+												<li><a href="javascript:;"><i class="icon-ok"></i>缩略图</a></li>
+											</ul>
+										</li>
+										<li>
+											<ul class="list-list2">
+												<li><a href="javascript:;"><i class="icon-ok"></i>文件名</a></li>
+												<li><a href="javascript:;"><i class="icon-ok"></i>修改时间</a></li>
+											</ul>
+										</li>
+										
+										
+									</ul>
+								</div>
+								<!--选中操作-->
+								<div class="checked-search" style="display: none;">
+									<ul class="clearfix">
+										<li>
+											<a href="javascript:;"><i class="icon-download-alt"></i>&nbsp;下载</a>
+										</li>
+										<li>
+											<a href="javascript:;"><i class="icon-reply"></i>&nbsp;分享</a>
+										</li>
+										<li class="delete">
+											<a href="javascript:;"><i class="icon-trash"></i>&nbsp;删除</a>
+										</li>
+										<li id="more-btn">
+											<a href="javascript:;">更多</a>
+											<ul class="more-btn-list"  style="display: none;">
+												<li>
+													<a href="javascript:;">移动到</a>
+												</li>
+												<li>
+													<a href="javascript:;">重命名</a>
+												</li>
+												<li>
+													<a href="javascript:;">移入保险箱</a>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+								<!--添加-->
+								<div class="add-btn">
+									<a href="javascript:;"><span>+</span>&nbsp;&nbsp;添加</a>
+									<!--子菜单-->
+									<ul class="add-list" style="display: none;">
+										<li>
+											<a href="javascript::"><i class="icon-file-alt"></i>上传文件</a>
+										</li>
+										<li>
+											<a href="javascript::"><i class=" icon-folder-close"></i>上传文件夹</a>
+										</li>
+										<li id="add-file">
+											<a href="javascript::"><i class="icon-plus-sign-alt"></i>新建文件夹</a>
+										</li>
+										<li>
+											<a href="javascript::"><i></i>离线下载</a>
+										</li>
+										<li>
+											<a href="javascript::"><i></i>文件</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</header>
+						<section class="content-main">
+							<!--文件信息-->
+							<header class="file-info">
+								<a href="javascript:;">名称&nbsp;<i class="icon-arrow-down" style="display: none;"></i></a>
+								<a href="javascript:;">上次修改时间&nbsp;<i class="icon-arrow-down" style="display: none;"></i></a>
+								<a href="javascript:;">大小</a>
+							</header>
+							<article class="file-box">
+								<div class="file-box-inset">
+									<ul class="">
+										<li>
+											<div class="file-ico">
+												<span class="checked">
+													<i class="icon-ok"></i>
+												</span>
+												<i class="icon-folder-close"></i>
+											</div>
+											<div class="file-paly">
+												<a href="javascript:;">
+													<span class="name">文件名字</span>
+													<time>2017年11月20日</time>
+													<span class="capacity">800K</span>
+												</a>
+											</div>
+										</li>
+										<li>
+											<div class="file-ico">
+												<span class="checked">
+													<i class="icon-ok"></i>
+												</span>
+												<i class="icon-folder-close"></i>
+											</div>
+											<div class="file-paly">
+												<a href="javascript:;">
+													<span class="name">文件名字</span>
+													<time>2017年11月20日</time>
+													<span class="capacity">800K</span>
+												</a>
+											</div>
+										</li>
+										<li>
+											<div class="file-ico">
+												<span class="checked">
+													<i class="icon-ok"></i>
+												</span>
+												<i class="icon-folder-close"></i>
+											</div>
+											<div class="file-paly">
+												<a href="javascript:;">
+													<span class="name">文件名字</span>
+													<time>2017年11月20日</time>
+													<span class="capacity">800K</span>
+												</a>
+											</div>
+										</li>
+										<li>
+											<div class="file-ico">
+												<span class="checked">
+													<i class="icon-ok"></i>
+												</span>
+												<i class="icon-folder-close"></i>
+											</div>
+											<div class="file-paly">
+												<a href="javascript:;">
+													<span class="name">文件名字</span>
+													<time>2017年11月20日</time>
+													<span class="capacity">800K</span>
+												</a>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</article>
+						</section>
+					</article>
+				</section>
+		</div>
+		</section>
+		<!--遮罩层，要生成div-->
+		<!--<div class="popup-bg"></div>-->
+		<!--<div class="popup-user-serve" style="display: none;">
+			<header class="popup-head">
+				<h3>下载微云客户端</h3>
+				<a href="javascript:;">+</a>
+			</header>
+			<div class="popup-content">
+				<div class="popup-phone">
+					<i class="icon-tablet"></i>
+					<p>
+						<strong>手机版</strong>
+						<span>安卓／iPhone手机扫描二维码安装</span>
+					</p>
+					<div class="phone-img">
+						<img src="../img/erweima.png"/>
+					</div>
+				</div>
+				<div class="popup-pc">
+					<i class=" icon-desktop"></i>
+					<p>
+						<strong>Windows版</strong>
+						<span>支持win10/XP/vista/win7/win8下载安装</span>
+					</p>
+					<div class="pc-load">
+						<a href="javascript:;">立即下载</a>
+					</div>
+				</div>
+			</div>
+		</div>-->
+		<!--删除提示框-->
+		<!--<div class="delete-hint-bg">
+			
+		</div>
+		<div class="delete-hint-main">
+			<header>
+				<h4>删除文件</h4>
+				<a href="javascript:;" class="hint-close">
+					+
+				</a>
+			</header>
+			<div class="hint-main">
+				<div class="hint-main-content">
+					<p>确定要删除这个文件夹？</p>
+					<p>已删除的文件夹可以在回收站找回</p>
+				</div>
+				<ul>
+					<li class="ok-delete">
+						<a href="javascript:;">确定</a>
+					</li>
+					<li class="no-delete">
+						<a href="javascript:;">取消</a>
+					</li>
+				</ul>
+			</div>
+		</div>-->
+	</body>
+</html>

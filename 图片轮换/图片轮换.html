@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			img{
+				vertical-align: top;
+			}
+			#box{
+				position: relative;
+				width: 300px;
+				height: 400px;
+				border: 5px solid #000;
+				margin: 50px auto auto;
+				overflow: hidden;
+			}
+			#box div{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+			#box img{
+				width: 100%;
+				height: 100%;
+			}
+			#box a{
+				position: absolute;
+				top: 175px;
+				width: 50px;
+				height: 50px;
+				text-align: center;
+				line-height: 50px;
+				font-size: 50px;
+				color: #fff;
+				text-decoration: none;
+			}
+			#box a:nth-of-type(1){
+				left: 0;
+			}
+			#box a:nth-of-type(2){
+				right: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div class="">
+				<img src="5.jpg"/>
+			</div>
+			<div class="">
+				<img src="3.jpg"/>
+			</div>
+			<div class="">
+				<img src="1.jpg"/>
+			</div>
+			<div class="">
+				<img src="4.jpg"/>
+			</div>
+			<div class="">
+				<img src="2.jpg"/>
+			</div>
+			<a href="javascript:;">&lt;</a>
+			<a href="javascript:;">&gt;</a>
+		</div>
+		<script src="JsFunction.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//获取元素
+			var box = document.querySelector('#box');
+			var a = document.querySelectorAll('a');
+			var div = document.querySelectorAll('#box div');
+			
+			//设置按钮的层级
+			for(var i=0; i<a.length; i++){
+				a[i].style.zIndex = div.length + 1;
+			}
+			
+			//设置div的层级
+			for(var i=0; i<div.length; i++){
+				div[i].style.zIndex = i;
+			}
+			
+			//初始位置
+			var n = div.length-1;
+			
+			//按钮'左'
+			a[0].onclick =function(){
+				moveLeft();
+			};
+			
+			//按钮'右'
+			a[1].onclick =function(){
+				moveRight()
+			};
+			
+			//键盘事件
+			document.onkeydown = function(ev){
+				var ev = ev||event;
+				if(ev.keyCode==37)moveLeft();
+				if(ev.keyCode==38)moveTop();
+				if(ev.keyCode==39)moveRight();
+				if(ev.keyCode==40)moveDown();
+				
+			}
+			
+			//鼠标移动
+			box.onmousedown =function(ev){
+				var ev = ev||event;
+				
+				//清除默认
+				ev.preventDefault();
+				
+				//初始位置
+				var x1 = ev.clientX;
+				var y1 = ev.clientY;
+				
+				box.onmouseup =function(ev){
+					var ev = ev||event;
+					
+					//结束位置
+					var x2 = ev.clientX;
+					var y2 = ev.clientY;
+					
+					var x = x2 - x1;
+					var y = y2 - y1;
+					
+					//右
+					if(x>0&&Math.abs(x)>Math.abs(y)){
+						moveRight();
+					}
+					//左
+					if(x<0&&Math.abs(x)>Math.abs(y)){
+						moveLeft();
+					}
+					//上
+					if(y<0&&Math.abs(x)<Math.abs(y)){
+						moveTop();
+					}
+					//下
+					if(y>0&&Math.abs(x)<Math.abs(y)){
+						moveDown();
+					}
+				}
+				
+				
+				
+			};
+			
+			
+			//向左
+			function moveLeft(){
+				MTweenPlus({
+			        obj:div[n],
+			        attrs:{
+			        	left:-div[n].offsetWidth + 'px'
+			        },
+			        duration:800,
+			        callBack:function(){
+			        	changeZIndex()
+			        	n--;
+			        	if(n<0){
+			        		n = div.length-1;
+			        	}
+			        	
+			        }
+			    });
+			}
+			
+			function moveRight(){
+				MTweenPlus({
+			        obj:div[n],
+			        attrs:{
+			        	left:div[n].offsetWidth + 'px'
+			        },
+			        duration:800,
+			        callBack:function(){
+			        	changeZIndex()
+			        	n--;
+			        	if(n<0){
+			        		n = div.length-1;
+			        	}
+			        	
+			        }
+			    });
+			}
+			
+			//向下
+			function moveDown(){
+				MTweenPlus({
+			        obj:div[n],
+			        attrs:{
+			        	top:div[n].offsetHeight + 'px'
+			        },
+			        duration:800,
+			        callBack:function(){
+			        	changeZIndex()
+			        	n--;
+			        	if(n<0){
+			        		n = div.length-1;
+			        	}
+			        	
+			        }
+			    });
+			}
+			
+			//向上
+			function moveTop(){
+				MTweenPlus({
+			        obj:div[n],
+			        attrs:{
+			        	top:-div[n].offsetHeight + 'px'
+			        },
+			        duration:800,
+			        callBack:function(){
+			        	changeZIndex()
+			        	n--;
+			        	if(n<0){
+			        		n = div.length-1;
+			        	}
+			        	
+			        }
+			    });
+			}
+			
+			
+			//修改层级，恢复0,0位置
+			function changeZIndex(){
+				//层级改到最小
+				div[n].style.zIndex = 0;
+				//回归位置
+				div[n].style.left =0;
+				div[n].style.top = 0;
+				//提高其他的层级
+				for(var i=0; i<div.length; i++){
+					if(i==n) continue;
+					div[i].style.zIndex = parseInt(div[i].style.zIndex) + 1;
+				}
+			}
+			
+		</script>
+	</body>
+</html>

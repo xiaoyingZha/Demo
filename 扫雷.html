@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.map-box{
+				position: relative;
+			}
+			.map-box div{
+				position: absolute;
+				width: 20px;
+				height: 20px;
+				background-color: #D1D0D4;
+				border: 2px solid #A0A0A4;
+				border-top-color: #eee;
+				border-left-color: #eee;
+			}
+			.map-box .lei{
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="map-box">
+		</div>
+		<script type="text/javascript">
+			
+			begin(10,10,10);
+			
+			/*执行函数*/
+			function begin(row,col,mine){//参数：行数，列数，雷数
+				
+				creatMap(row,col);//1、生成10*10的地图
+				creatMine(mine);//2、埋雷
+//				findMine(col);//3、找雷点
+			}
+			
+			
+			
+			
+			
+			
+			
+			//1、生成地图的函数
+			function creatMap(row,col){//参数：行，列
+				
+				var html = '';
+				//生成row*col的格子地图
+				for(var i=0; i<row; i++){
+					for(var j=0; j<col; j++){
+						html += '<div style="top:'+ j*24 +'px;left:'+ i*24 +'px"></div>';
+					}
+				}
+				
+				//获取生成元素的父级
+				var mapBox = document.querySelector('.map-box');
+				
+				//将生成的div插入DOM
+				mapBox.innerHTML = html;
+				
+			}
+			
+			
+			//2、埋雷
+			function creatMine(mine){//参数：埋雷的个数
+				
+				//获取生成的div
+				var dives = document.querySelectorAll('.map-box div');
+				
+				var arr = [];
+				for(var i=0; i<mine; i++){
+					//定义一个随机数
+					var num = random(0,dives.length-1);
+					
+					//去重
+					var repeat = false;
+					for(var j=0; i<arr.length; i++){
+						if(arr[j]==num){
+							repeat = true;//重复的标记状态
+							break;
+						}
+					}
+					
+					if(!repeat){
+						arr.push(num);//重复的不再放进数组
+					}else{
+						i--;
+					}
+					
+				}
+				
+				//埋雷
+				for(var i=0; i<arr.length; i++){
+					dives[arr[i]].className = 'lei';
+				}
+				
+			}
+			
+			
+			
+			//3、找雷点
+			function findMine(col){
+				//获取生成的div
+				var dives = document.querySelectorAll('.map-box div');
+				
+				//遍历div
+				for(var i=0; i<dives.length; i++){
+					if(dives[i].className != 'lei'){
+						var num = 0;//默认周围雷的个数是0
+						
+						//上
+						if(dives[i-col]&&dives[i-col].className=='lei'){
+							num++;
+						}
+						
+						//下
+						if(dives[i+col]&&dives[i+col].className=='lei'){
+							num++;
+						}
+						
+						
+						//左
+						if(!(i%col==0) && dives[i-1] && dives[i-1].className=='lei'){
+							num++;
+						}
+						//左上
+						if(!(i%col==0) && dives[i-col-1] && dives[i-col-1].className=='lei'){
+							num++;
+						}
+						//左下
+						if(!(i%col==0) && dives[i+col-1] && dives[i+col-1].className=='lei'){
+							num++;
+						}
+						
+						//右
+						if(!(i%col==9)&& dives[i+1] && dives[i+1].className=='lei'){
+							num++;
+						}
+						//右上
+						if(!(i%col==9) && dives[i-col+1] && dives[i-col+1].className=='lei'){
+							num++;
+						}
+						//右下
+						if(!(i%col==9) && dives[i+col+1] && dives[i+col+1].className=='lei'){
+							num++;
+						}
+						
+						if(num>0){
+							dives[i].innerHTML = num;
+						}
+						
+						
+					}
+				}
+			}
+			
+			
+			click(10);
+			//4、点击事件
+			function click(col){
+				
+				//获取生成的div
+				var dives = document.querySelectorAll('.map-box div');
+				
+				//div点击
+				for(var i=0; i<dives.length; i++){
+					
+					if(dives[i].className != 'lei'){
+						dives[i].onclick = function (){
+							
+						}
+						
+					}
+				}
+				
+			}
+			
+			
+			
+			//获取x~y之间的随机数的函数
+			function random(x,y){
+				return Math.round(Math.random()*(y-x)+x);
+			}
+			
+		</script>
+	</body>
+</html>

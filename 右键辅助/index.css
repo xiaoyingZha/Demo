@@ -1,0 +1,99 @@
+body{
+	margin: 0;
+}
+ul{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color: #000;
+}
+#menu{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 266px;
+	height: 267px;
+	background-color: #fff;
+	border: 1px solid #bababa;
+	box-shadow: 1px 1px 4px #8e8e8e;
+}
+#menu > li{
+	border-bottom: 1px solid #e9e9e9;
+	padding: 5px 0;
+	box-sizing: border-box;
+	line-height: 22px;
+	font-size: 12px;
+}
+#menu > li > a{
+	display: block;
+	padding: 0 25px 0 35px;
+	height: 22px;
+}
+#menu a:hover{
+	background-color: #ebebeb;
+}
+#menu a > span:nth-of-type(1){
+	float: left;
+}
+#menu a > span:nth-of-type(2){
+	float: right;
+}
+.item1{
+	height: 76px;
+}
+.item2{
+	height: 102px;
+}
+.item3{
+	position: relative;
+	height: 33px;
+}
+.item3::before{
+	position: absolute;
+	top: 9px;
+	left: 9px;
+	content: '';
+	width: 16px;
+	height: 16px;
+	background: url(pe.png) no-repeat;
+}
+.item3::after{
+	position: absolute;
+	top: 13px;
+	right: 7px;
+	content: '';
+	width: 5px;
+	height: 8px;
+	background: url(sanjiao.png) no-repeat;
+}
+.item4{
+	height: 53px;
+	border-bottom: none;
+}
+.item3 ul{
+	position: absolute;
+	top: 2px;
+	left: 263px;
+	background-color: #fff;
+	width: 132px;
+	height: 164px;
+	border: 1px solid #bababa;
+	box-shadow: 1px 1px 5px #8e8e8e;
+}
+.item3 ul li{
+	height: 32px;
+	border-bottom: 1px solid #e9e9e9;
+}
+.item3 li a{
+	display: block;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+}
+.item3 ul li:nth-of-type(5){
+	border-bottom: none;
+	
+}

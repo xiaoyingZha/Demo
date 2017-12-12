@@ -1,0 +1,229 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul{
+				margin: 0;
+				list-style: none;
+			}
+			#list h2{
+				width: 250px;
+				margin: 0;
+				padding-left: 25px;
+				height: 30px;
+				line-height: 30px;
+				font-size: 20px;
+				font-weight: normal;
+				background:url(1.png) no-repeat 0 5px;
+			}
+			#list ul{
+				display: none;
+			}
+			#list h2.bg{
+				background:url(3.png) no-repeat 0 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="list">
+		</ul>
+		<script type="text/javascript">
+			
+			
+			//创建json
+			var json_list = [
+					{
+						title:'HTML',
+						sub:[
+							{
+								title:'html标签',
+								sub:[
+									{
+										title:'常用标签',
+										sub:[]
+									}
+								]
+							},
+							{
+								title:'html5标签',
+								sub:[
+									{
+										title:'标签语义化',
+										sub:[]
+									}
+								]
+							}
+						]
+					},
+					{
+						title:'CSS',
+						sub:[
+							{
+								title:'样式',
+								sub:[
+									{
+										title:'内联样式',
+										sub:[
+											{
+												title:'link标签引入',
+												sub:[]
+											}
+										]
+									}
+								]
+							},
+							{
+								title:'选择器',
+								sub:[
+									{
+										title:'css3选择器',
+										sub:[]
+									}
+								]
+							},
+							{
+								title:'兼容性',
+								sub:[
+									{
+										title:'IE out',
+										sub:[]
+									},
+									{
+										title:'主流',
+										sub:[]
+									}
+								]
+							}
+						]
+					},
+					{
+						title:'JavaScript',
+						sub:[
+							{
+								title:'基础知识',
+								sub:[
+									{
+										title:'小白',
+										sub:[
+											{
+												title:'记的东西太多了',
+												sub:[]
+											}
+										]
+									}
+								]
+							},
+							{
+								title:'进阶',
+								sub:[
+									{
+										title:'是只牛，牛牪犇',
+										sub:[]
+									}
+								]
+							},
+							{
+								title:'高阶层',
+								sub:[
+									{
+										title:'牛气',
+										sub:[]
+									},
+									{
+										title:'信手拈来',
+										sub:[]
+									}
+								]
+							}
+						]
+					}
+				]
+			
+			
+			//获取元素
+			var list = document.getElementById('list');
+			
+			list.innerHTML = createHtml(json_list);
+			
+			//创建菜单
+			function createHtml(json){
+				
+				var li_html = '';
+				
+				for(var i=0; i<json.length; i++){
+					
+					if(json[i].sub.length>0){
+						
+						li_html += '<li><h2>'+ json[i].title +'</h2><ul>'+ createHtml(json[i].sub) +'</ul></li>';
+						
+					}else{
+						li_html += '<li><h2>'+ json[i].title +'</h2></li>';
+					}
+					
+				}
+				
+				return li_html;
+				
+			}
+			
+			
+			//获取元素
+			var h2 = document.querySelectorAll('#list h2');
+			
+			for(var i=0; i<h2.length; i++){
+				
+				h2[i].onclick = function (){
+					if(!this.onOff){
+						if(this.nextElementSibling){
+							this.className = 'bg';
+							this.nextElementSibling.style.display = 'block';
+							this.onOff = true;
+						}
+					}else{
+						if(this.nextElementSibling){
+							this.className = '';
+							this.nextElementSibling.style.display = 'none';
+							
+							clearUl(this);//调用清除子孙ul的函数
+							
+							//改变状态
+							this.onOff = false;
+						}
+					}
+					
+				};
+			}
+			
+			
+			//清除子孙ul的函数
+			function clearUl(this_){
+				
+				if(this_.nextElementSibling){//当前元素有没有下一个兄弟
+					var siblingChild = this_.nextElementSibling.children;//获取兄弟的孩子
+				}
+				
+				if(siblingChild.length>0){//如果有孩子
+					for(var j=0; j<siblingChild.length; j++){//遍历孩子
+						
+						if(siblingChild[j].children.length>1){//孩子的孩子是否长度大于1，说明有h2、ul
+							
+							siblingChild[j].lastElementChild.style.display = 'none';//ul隐藏
+							siblingChild[j].firstElementChild.onOff = false;//改变h2状态
+							
+							//递归
+							clearUl(siblingChild[j].firstElementChild);//递归
+						}
+						
+					}
+				}
+			}
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

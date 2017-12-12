@@ -1,0 +1,126 @@
+/*reset*/
+body,p,h2{
+	margin: 0;
+}
+a{
+	text-decoration: none;
+	color: #000;
+}
+ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+/*index*/
+#box{
+	width: 760px;
+	height: 516px;
+	margin: 50px auto;
+	background-image: linear-gradient(#6d1e2e,#2a1922);
+	padding: 30px;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+.inner{
+	height: 456px;
+	background-color: #20242d;
+	border-radius: 10px;
+	padding: 20px 25px;
+	box-sizing: border-box;
+}
+#box header{
+	height: 46px;
+	margin-bottom: 20px;
+}
+#box header h2{
+	float: left;
+	width: 170px;
+	height: 46px;
+	text-indent: -9999px;
+	background: url(../img/zp-img.png) no-repeat;
+}
+.directory{
+	float: left;
+	width: 70px;
+	height: 340px;
+	border-right: 2px solid #2d323e;
+	box-shadow: 1px 0 0 #1d1e26;
+}
+.directory li{
+	height: 40px;
+	padding: 20px 0;
+	line-height: 20px;
+	text-align: center;
+	font-size: 14px;
+	color: #d2d5e8
+}
+.directory li a{
+	color: #d2d5e8;
+}
+.info-list{
+	width: 540px;
+	overflow: hidden;
+	padding-left: 15px;
+	margin-bottom: 25px;
+}
+.info-list li{
+	height: 30px;
+	padding: 20px 0;
+	line-height: 20px;
+	border-bottom: 3px dashed #272b34;
+	color: #b6bbd2;
+}
+.info-list li .num{
+	float: left;
+	width: 40px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 30px;
+	color: #666e82;
+	text-align: center;
+	border-right: 2px solid #252932;
+	margin-right: 8px;
+}
+.info-list li p{
+	float: left;
+	width: 390px;
+	height: 30px;
+	font-size: 14px;
+	margin-right: 10px;
+}
+.info-list p span:nth-of-type(2){
+	padding-left: 1em;
+}
+.info-list p span:nth-of-type(3){
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.release{
+	float: right;
+	width: 65px;
+	height: 30px;
+	line-height: 20px;
+	font-size: 12px;
+	text-align: center;
+}
+.release time{
+	color: #5d6372;
+}
+.release a{
+	color: #b2b6ca;
+}
+.pages{
+	float: left;
+	width: 550px;
+	height: 20px;
+	margin-left: 15px;
+	text-align: center;
+	line-height: 20px;
+	font-size: 18px;
+}
+.pages a{
+	color: #b6bbd2;
+	padding: 0 10px;
+}

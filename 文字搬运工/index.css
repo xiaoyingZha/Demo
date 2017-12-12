@@ -1,0 +1,39 @@
+.box{
+	width: 800px;
+	height: 500px;
+	background-color: sandybrown;
+	margin: 50px auto;
+	border-radius: 5px;
+	padding: 20px;
+}
+.box > div , .text1{
+	float: left;
+}
+.text1, .text2{
+	padding: 8px;
+	width: 300px;
+	height: 450px;
+	background-color: #fff;
+	border: none;
+	word-break: break-word;
+}
+.operate{
+	width: 130px;
+	margin: 15px;
+	text-align: center;
+	line-height: 60px;
+}
+.btn{
+	font-size: 20px;
+	display: block;
+	height: 60px;
+	background-color: salmon;
+	color: #fff;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.num{
+	display: block;
+	height: 60px;
+	color: #00008B;
+}

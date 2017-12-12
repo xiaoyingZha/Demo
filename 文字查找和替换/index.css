@@ -1,0 +1,124 @@
+/*reset*/
+a{
+	text-decoration: none;
+}
+input{
+	padding: 0;
+	border: none;
+}
+/*index*/
+.box{
+	width: 800px;
+	height: 562px;
+	background-color: #9ed8e4;
+	margin: 10px auto;
+	border-radius: 3px;
+	padding-top: 60px;
+}
+.main{
+	width: 570px;
+	height: 325px;
+	background-color: #fff;
+	border-radius: 10px;
+	margin: 0 auto 30px;
+}
+.operate{
+	position: relative;
+	width: 570px;
+	height: 160px;
+	background-color: #fff;
+	border-radius: 10px;
+	margin: 0 auto;
+}
+.text-box{
+	float: left;
+	width: 400px;
+	height: 270px;
+	background-color: #ebf8f9;
+	border: 1px solid #a5dde9;
+	margin: 25px 20px;
+	word-break: break-word;
+	overflow: auto;
+}
+.text-box span{
+	background-color: yellow;
+}
+.main > a{
+	float: left;
+	width: 95px;
+	height: 80px;
+	
+}
+.main > a:nth-of-type(1){
+	margin-top: 25px;
+	background: #83dff1 url(zk.png) no-repeat 30px 0;
+}
+/*点击要添加的className*/
+.box .main .bgimg{
+	background: #83dff1 url(bg.png) no-repeat 30px 0;
+}
+.main > a:nth-of-type(2){
+	margin-top: 15px;
+	background: #9e9bf6 url(bg.png) no-repeat 30px -95px;
+	transition: .2s;
+}
+.main > a:nth-of-type(3){
+	margin-top: 15px;
+	background: #93e69d url(bg.png) no-repeat 30px -190px;
+	transition: .2s;
+}
+.fun{
+	height: 60px;
+	text-align: center;
+	line-height: 40px;
+	margin-bottom: 10px;
+}
+.fun .cz, .fun .th{
+	float: left;
+	width: 100px;
+	height: 40px;
+	color: #fff;
+	border-radius: 3px;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+.fun .cz{
+	background-color: #9e9bf6;
+}
+.fun .th{
+	background-color: #93e69d;
+}
+.fun .cha{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 14px;
+	height: 14px;
+	background: url(cha.png) no-repeat;
+	cursor: pointer;
+}
+.find{
+	height: 52px;
+	padding: 0 20px;
+}
+.find input{
+	float: left;
+	height: 47px;
+	border: 2px solid #bde6ed;
+	text-indent: 1em;
+}
+.find input:nth-of-type(1){
+	width: 410px;
+}
+.find input:nth-of-type(2){
+	display: none;
+	width: 180px;
+	margin: 0 15px;
+}
+.find  a{
+	float: right;
+	width: 95px;
+	height: 52px;
+	background: #9e9bf6 url(fd.png) no-repeat;
+	border-radius: 3px;
+}

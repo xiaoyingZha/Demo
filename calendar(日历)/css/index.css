@@ -1,0 +1,92 @@
+/*index CSS*/
+.time-box{
+	width: 360px;
+	height: 455px;
+	background-color: #333333;
+	margin: 50px auto;
+	
+}
+.time-box .now-time{
+	height: 112px;
+	border-bottom: 1px solid #5c5c5c;
+	padding: 22px;
+	box-sizing: border-box;
+}
+.time-box .hms{
+	height: 46px;
+	line-height: 46px;
+	font-size: 40px;
+	color: #fff;
+	font-weight: 100;
+}
+.time-box .ymd{
+	height: 32px;
+	line-height: 32px;
+	color: #ff6559;
+}
+.time-box .calendar{
+	height: 343px;
+	padding: 10px 22px;
+	box-sizing: border-box;
+}
+.time-box .operation{
+	height: 32px;
+	margin-bottom: 8px;
+	color: #fff;
+}
+.time-box .left-time{
+	width: 100px;
+	height: 32px;
+	line-height: 32px;
+	color: #fff;
+}
+.time-box .right-btnes{
+	width: 80px;
+	height: 32px;
+}
+.right-btnes > span{
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	background: url(../img/btn-bg.png) no-repeat;
+	text-indent: -9999px;
+	cursor: pointer;
+}
+.right-btnes > span:nth-of-type(1){
+	background-position: 0 0;
+}
+.right-btnes > span:nth-of-type(2){
+	background-position: -48px 0;
+}
+.time-box .week{
+	display: flex;
+	justify-content: space-between;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	color: #fff;
+}
+.time-box .week li{
+	float: left;
+	width: 30px;
+	height: 30px;
+}
+.month-date li{
+	float: left;
+	width: 30px;
+	height: 30px;
+	line-height: 28px;
+	text-align: center;
+	margin:5px 17px 5px 0;
+	border: 2px solid transparent;
+	box-sizing: border-box;
+}
+li.prev, li.next{
+	color: #A7A6AF;
+}
+li.now{
+	color: #fff;
+}
+.month-date li:nth-of-type(7n){
+	margin-right: 0;
+}

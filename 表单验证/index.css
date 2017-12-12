@@ -1,0 +1,107 @@
+#infor-box{
+	width: 700px;
+	height: 500px;
+	margin: 50px auto;
+	box-sizing: border-box;
+	padding: 115px;
+	background: #5ad3f6;
+	overflow: auto;
+}
+#infor-box form{
+	width: 464px;
+	height: 160px;
+	background-color: #fff;
+	padding: 25px 35px;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	border-radius: 10px;
+}
+form > div{
+	float: left;
+	height: 28px;
+	line-height: 28px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 30px;
+}
+form > div:nth-of-type(2n+1){
+	width: 180px;
+}
+form > div:nth-of-type(2n+1) input{
+	width: 135px;
+}
+form > div:nth-of-type(2n){
+	width: 140px;
+}
+form > div:nth-of-type(2n) input{
+	width: 98px;
+}
+form > div input{
+	height: 24px;
+	border-radius: 14px;
+	border: 1px solid #56cef5;
+	color: #56cef5;
+	padding: 0 10px;
+	box-sizing: border-box;
+}
+form > div:nth-last-of-type(1){
+	width: 140px;
+	text-align: center;
+	color: #FFF5EE;
+	background-color: #56cef5;
+	border-radius: 14px;
+}
+.sex-box{
+	position: relative;
+}
+.sex-box > span:nth-of-type(2){
+	position: absolute;
+	top: 2px;
+	right: 15px;
+	font-size: 20px;
+	color: #56cef5;
+	transform: rotateZ(90deg);
+	cursor: pointer;
+}
+.change-sex{
+	position: absolute;
+	top: 40px;
+	left: 45px;
+	width: 114px;
+	height: 0px;
+	line-height: 28px;
+	color: #fff;
+	background-color: rgba(0,0,0,.5);
+	border-radius: 14px;
+	overflow: hidden;
+	transition: .5s;
+}
+.change-sex span{
+	float: left;
+	margin-left: 10px;
+	cursor: pointer;
+}
+#infor-box table{
+	width: 464px;
+	text-align: center;
+	border-collapse: collapse;
+	line-height: 32px;
+}
+table thead{
+	color: #fff;
+	background-color: #48a5bf;
+	height: 32px;
+}
+table thead .w{
+	width: 75px;
+}
+table thead .width{
+	width: 165px;
+}
+tbody tr{
+	background-color: #FFF5EE;
+	color: #56cef5;
+}
+tbody tr span{
+	padding: 0 5px;
+}
